@@ -1,0 +1,26 @@
+<h1><a href="https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom">Shadow DOM Updated</a></h1>
+<h1><a href="https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom">Shadow DOM</a></h1>
+<h1><a href="https://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-301/">Shadow DOM Advanced</a></h1>
+<h1><a href="https://www.w3.org/TR/shadow-dom/">Shadow DOM Spec</a></h1>
+<h1><a href="http://html5-demos.appspot.com/static/shadowdom-visualizer/index.html">Shadow DOM Visualizer</a></h1>
+
+
+
+<p>
+    Shadow trees added to a host are stacked in the order they're added, starting with the most recent first. The last one added
+    is the one that renders.
+    <br />
+    <br /> The most recently added tree is called the younger tree. Previous trees are called older trees. In this example,
+    root2 is the younger tree and root1 is the older tree.
+    <br />
+    <br /> If multiple
+    <shadow> insertion points exist in a shadow tree, only the first is recognized. The rest are ignored.
+</p>
+<div id="example1">Light DOM</div>
+<script>
+    var container = document.querySelector('#example1');
+    var root1 = container.createShadowRoot();
+    var root2 = container.createShadowRoot();
+    root1.innerHTML = '<div>Root 1 FTW</div>';
+    root2.innerHTML = '<div>Root 2 FTW</div>';
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Shadow DOM introduces a new kind of node that can be associated with elements, this is called a shadow root. An element that
+        has a shadow root associated with it is known as a shadow host. When an element is a shadow host, the content of
+        the shadow root is rendered instead of the content of the host element. Lets take a look at a simple example.
+        <br />
+        <br /> This basically means that the shadow host's content regardless of it's current state will get replaced by
+        the content provided by the shadow root. It's important to note that we shouldn't use any content within our shadow root since this content is invisible by Search Engines
+        <br />
+        <br /> Make sure to have "Show user agent shadow DOM" option enabled in Chrome Developer Tools to see how shadow
+        host's original content (Star Trek) get's replaced by Star Wars.
+    </p>
+    <h1>Star Trek</h1>
+    <script>
+        var host = document.querySelector("h1");
+        var root = host.createShadowRoot();
+        root.textContent = "Star Wars";
+    </script>
+</body>
+
+</html>

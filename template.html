@@ -1,0 +1,87 @@
+<template id="template">
+    <style>
+        .outer {
+            width: 350px;
+            font-family: Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        
+        .info {
+            background: #545454;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #545454), color-stop(100%, #212121));
+            background: -webkit-linear-gradient(top, #545454 0%, #212121 100%);
+            background: linear-gradient(to bottom, #545454 0%, #212121 100%);
+            padding: 1.5em;
+            text-align: center;
+        }
+        
+        .song {
+            color: #FFFFFF;
+            font-size: 1.5em;
+        }
+        
+        .artist {
+            margin-top: 0.5em;
+            color: #BABABA;
+            font-size: 0.9em;
+        }
+        
+        .controls {
+            padding: 1em;
+            text-align: center;
+            background: #f7f7f7;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f7f7f7), color-stop(100%, #e6e6e6));
+            background: -webkit-linear-gradient(top, #f7f7f7 0%, #e6e6e6 100%);
+            background: linear-gradient(to bottom, #f7f7f7 0%, #e6e6e6 100%);
+        }
+        
+        button {
+            background: #f9f9f9;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #d9d9d9));
+            background: -webkit-linear-gradient(top, #f9f9f9 0%, #d9d9d9 100%);
+            background: linear-gradient(to bottom, #f9f9f9 0%, #d9d9d9 100%);
+            border: 1px solid #BABABA;
+            border-radius: 3px;
+            font-size: 0.8em;
+            padding: 0.3em 0.6em;
+            cursor: pointer;
+        }
+    </style>
+    <div class="outer">
+        <div class="info">
+            <div class="song">
+                <!--By default all of the content from the shadow host will be projected into the template at the location of the <content> element.-->
+                <!--<content> element has a select attribute that allows you to specify which element in your shadow host the content should be projected from.-->
+                <!--Here we use the select attribute to specify the class of the element which the projected content should come from.-->
+                <content select=".song"></content>
+            </div>
+            <div class="artist">
+                <!--By default all of the content from the shadow host will be projected into the template at the location of the <content> element.-->
+                <!--<content> element has a select attribute that allows you to specify which element in your shadow host the content should be projected from.-->
+                <!--Here we use the select attribute to specify the class of the element which the projected content should come from.-->
+                <content select=".artist"></content>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="play">Play</button>
+            <button class="pause">Pause</button>
+        </div>
+    </div>
+</template>
+<!-- Shadow Host -->
+<div id="player">
+    <span class="song">Orange Skies</span>
+    <span class="artist">Newton Faulkner</span>
+</div>
+<!-- /Shadow Host -->
+<script>
+    var host = document.querySelector('#player'); /* reference to a shadow host - element we will "render" our shadow root onto */
+    var shadow = host.createShadowRoot(); /* create a new shadow root */
+    var template = document.querySelector('#template'); /* reference to our widget template */
+    shadow.appendChild(template.content); /* add the template content to the shadow root */
+    console.log(template);
+    template.remove(); /* remove the original template from the main document DOM */
+</script>
